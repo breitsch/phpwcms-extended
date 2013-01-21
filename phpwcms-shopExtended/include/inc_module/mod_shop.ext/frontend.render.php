@@ -430,7 +430,7 @@ if( $_shop_load_cat !== false ) {
 	
 	if(is_array($data) && count($data)) {
 
-		$x = 0;
+		$x = 1;
 	
 		foreach($data as $row) {
 		
@@ -498,7 +498,7 @@ if( $_shop_load_cat !== false ) {
 	}
 	
 	if( count($shop_cat) ) {
-	
+    (isset($_tmpl['config']['cat_all_position']) && $_tmpl['config']['cat_all_position'] == 1) ? $x=99999 : $x=0;
 		if( ! $shop_limited_cat ) {
 			$shop_cat[$x]  = '<li';
 			if($shop_cat_selected == 'all') {
@@ -510,6 +510,7 @@ if( $_shop_load_cat !== false ) {
 			$shop_cat[$x] .= '</a>';
 			$shop_cat[$x] .= '</li>';
 		}
+    ksort($shop_cat);
 		$shop_cat = '<ul class="shop_cat">' . LF.'	' . implode(LF.'	', $shop_cat) . LF . '</ul>';
 		
 	
